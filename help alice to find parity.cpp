@@ -1,26 +1,23 @@
 #include <iostream>
 using namespace std;
 
+long long f(long long n) {
+    if (n % 4 == 0) return n;
+    if (n % 4 == 1) return 1;
+    if (n % 4 == 2) return n + 1;
+    return 0;
+}
+
 int main() {
-    int t;
-    cin >> t;
+    long long L, R;
+    cin >> L >> R;
 
-    while (t--) {
-        int n;
-        cin >> n;
+    long long X = f(R) ^ f(L - 1);
 
-        int parity = 0;
-
-        while (n > 0) {
-            parity ^= (n & 1);  
-            n >>= 1;            
-        }
-
-        if (parity == 0)
-            cout << "EVEN\n";
-        else
-            cout << "ODD\n";
-    }
+    if (X % 2 == 0)
+        cout << "even";
+    else
+        cout << "odd";
 
     return 0;
 }
